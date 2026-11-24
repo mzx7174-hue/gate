@@ -51,7 +51,7 @@ DEFAULT_VPNGATE_API = "http://www.vpngate.net/api/iphone/"
 DEFAULT_VPNGATE_MIRROR = (
     "https://raw.githubusercontent.com/fdciabdul/Vpngate-Scraper-API/main/json/data.json"
 )
-DEFAULT_OPTIMAL_API = "https://ips.gaoji.uk/best_ips.txt,https://cleanip.io/api/cf-best-ip?format=txt"
+DEFAULT_OPTIMAL_API = "https://gist.githubusercontent.com/mzx7174-hue/bac4468a1fe967d8ae3ceae1b8601c39/raw/e97b8279192928470dc5a3b67876ada0edc5c5ff/best_ips.txt"
 
 
 # 占位符检测：命中任意一个就认为用户还没配置

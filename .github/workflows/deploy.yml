@@ -1,42 +1,56 @@
-name: Deploy to GitHub Pages
+name: Build and Deploy to Pages
 
 on:
-  push:
-    branches: ["main"] # 如果你的主分支叫 master，请把 main 改成 master
+  # 允许你手动触发
   workflow_dispatch:
+  # 定时触发（比如每 6 小时一次）
+  schedule:
+    - cron: '0 */6 * * *'
+  # 推送到 main 分支时触发
+  push:
+    branches: ["main"]
 
+# 必备的权限设置
 permissions:
   contents: read
   pages: write
   id-token: write
 
+# 允许一个并发部署
 concurrency:
   group: "pages"
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
-  deploy:
+  build-and-deploy:
     environment:
       name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Python # 如果原项目需要 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      # 假设原作者的运行命令是这个，你需要根据 check.yml 里的逻辑自己改一下
+      - name: Run script to generate nodes
+        run: |
+          pip install -r requirements.txt
+          python main.py  # 这里换成你生成 nodes.txt 的真实命令
+          
+      # ！！！关键点：确保你要发布的文件夹里有 nodes.txt ！！！
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      # ⚠️ 注意：如果你的项目需要编译（比如Vue/React），把安装和编译命令写在这里
-      # 例如： 
-      # - name: Install dependencies
-      #   run: npm install
-      # - name: Build
-      #   run: npm run build
-
+      # 这一步会自动把文件夹打包，并命名为 "github-pages" artifact
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './' # ⚠️ 如果是Vue/React编译后的项目，通常改成 './dist' 或 './build'
+          path: './public'  # 请把这里改成你实际存放 nodes.txt 的文件夹路径
 
       - name: Deploy to GitHub Pages
         id: deployment

@@ -51,7 +51,7 @@ DEFAULT_VPNGATE_API = "http://www.vpngate.net/api/iphone/"
 DEFAULT_VPNGATE_MIRROR = (
     "https://raw.githubusercontent.com/fdciabdul/Vpngate-Scraper-API/main/json/data.json"
 )
-DEFAULT_OPTIMAL_API = "https://gist.githubusercontent.com/mzx7174-hue/98f8d38c21bb1566ca039a11f8279334/raw/2f3e9a452730b4412629afb038f431beb29612fe/best_ips.txt"
+DEFAULT_OPTIMAL_API = "https://bestcf.pages.dev/domain/all.txt,https://bestcf.pages.dev/vps789/top100.txt,https://bestcf.pages.dev/wetest/ipv4.txt,https://bestcf.pages.dev/lzj/all.txt,https://bestcf.pages.dev/xinyitang3/ipv4.txt,https://bestcf.pages.dev/cfyes/ipv4.txt,https://api.soso.sryze.cc/AutoSubFBot.txt,https://bestcf.pages.dev/tiancheng/jp.txt,https://cf.junzhen.qzz.io/best_ips_bj.txt,https://raw.githubusercontent.com/yuanxiawan/cfipv4db/refs/heads/main/cfip.txt,https://raw.githubusercontent.com/LancelotRar/best-cf-ips/refs/heads/main/best-cf-ip-scanned-top400.txt"
 
 
 # 占位符检测：命中任意一个就认为用户还没配置
